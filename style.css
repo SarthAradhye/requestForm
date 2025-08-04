@@ -45,6 +45,7 @@ label{
     display: grid;
     margin-bottom: 3%;
     font-weight: 600;
+    color:#ceaa5b;
 }
 input{
     height: 20px;
