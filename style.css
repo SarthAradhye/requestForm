@@ -34,7 +34,7 @@ form{
     margin: 5%;
     padding: 5%;
     background-color: transparent;
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(30px);
     border: #ceaa5b solid 3px;
     border-radius: 15px;
     align-content: center;
