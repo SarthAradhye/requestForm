@@ -93,15 +93,15 @@ label{
 }
 @font-face {
     font-family: manrope;
-    src: url(/public/fonts/manrope-regular.otf);
+    src: url(/manrope-regular.otf);
 }
 @font-face {
     font-family: lato;
-    src: url(/public/fonts/Lato-Regular.ttf);
+    src: url(/Lato-Regular.ttf);
 }
 @font-face {
     font-family: Panton;
-    src: url(/public/fonts/Panton-LightCaps.otf);
+    src: url(/Panton-LightCaps.otf);
 }
 @keyframes cursor {
     50% {
