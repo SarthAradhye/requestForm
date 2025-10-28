@@ -13,33 +13,78 @@
 </head>
 
 <body>
+    <!--
+    *List of Questions*
+        what's your name
+        business name?
+        mobile number?
+        email address?
+        what you want? (Simple website, webapp, mobile application, custom software, complete ecommercce suite, etc.)
+        which sector would you be catering?
+        when are you planning to go for this?(urgent, within a week, within a month, within 6 months)    
+    -->
     <header>
-        <div class="logopart">
-            <img src="/newAradhyeTechlogo.png" alt="AradhyeTech a company that wishes to bring change using tech">
-            <div class="logotext">
-                <h1>AradhyeTech</h1>
-                <h4>Change matters</h4>
-            </div>
-        </div>
+        <img src="/newAradhyeTechlogo.png" alt="AradhyeTech Logo">
+        <h1>AradhyeTech</h1>
     </header>
-    <div class="form">
-        <form action="https://formspree.io/f/mdkdlkjp" method="post">
-            <label for="personName"> Your Name
-                <input type="text" name="personName" id="">
+    <div class="circleContainer">
+        
+    </div>
+    <div class="secondCircle">
+        
+    </div>
+    <div class="container">
+        <h1 class="text">Bring your vision to reality!</h1>
+    </div>
+    <div class="contactform">
+
+        <form action="" method="post">
+            <label for="user_name">
+                Enter your name
+                <input type="text" id="user_name">
             </label>
-            <label for="buzName"> Business Name
-                <input type="text" name="buzName" id="">
+            <label for="business_name">
+                Enter your organization name
+                <input type="text" id="business_name">
             </label>
-            <label for="contactNum"> Contact Number
-                <input type="text" name="contactNum" id="">
+            <label for="mobile_number">
+                Enter your mobile number
+                <input type="text" id="mobile_number">
             </label>
-            <label for="requirement"> Requirement for?
-                <input type="text" name="requirement" id="">
+            <label for="email_address">
+                Enter your email address
+                <input type="text" id="email_address">
             </label>
-            <label for="refCode"> Your reference code
-                <input type="text" name="refCode" id="">
+            <label for="requirement">
+                So which technical product you want?
             </label>
-            <button type="submit">Submit your request</button>
+            <select name="requirement" id="requirement">
+                <option value="default">Select option</option>
+                <option value="SimpleWebsite">Simple Website</option>
+                <option value="DynamicWebsite">Dynamic Website</option>
+                <option value="MobileApp">Mobile App</option>
+                <option value="CustomSoftW">Custom Software</option>
+                <option value="ECommSuite">Complete Ecommerce Suite</option>
+            </select>
+            <label for="sector">
+                Which sector you would be catering?
+                <input type="text" placeholder="eg. Banking, Travel, etc.">
+            </label>
+            <label for="time">
+                When are you planning for purchase?
+            </label>
+            <select name="time" id="time">
+                <option value="default">Select option</option>
+                <option value="urgent">Urgent</option>
+                <option value="thisweek">This Week</option>
+                <option value="thismonth">This month</option>
+                <option value="Flexible">Flexible</option>
+            </select>
+
+            <div class="frmbtns">
+                <button type="submit">Submit</button>
+                <button type="reset">Reset</button>
+            </div>
         </form>
     </div>
 </body>
