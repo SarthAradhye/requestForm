@@ -4,7 +4,7 @@ type QuotationData = {
     mobileNumber: string,
     email: string,
     requirement: string,
-    sector:string,
+    sector: string,
     time: string,
 }
 
@@ -19,15 +19,16 @@ requestQuotationForm?.addEventListener("submit", async (e: SubmitEvent) => {
     const requirement = getInputValue("requirement");
     const sector = getInputValue("sector");
     const time = getInputValue("time");
+    const submitButton = document.getElementById("requestQuotation-submit-btn") as HTMLButtonElement | null;
 
-    const quotationData = { userName, businessName, mobileNumber, email, requirement,sector, time }
+    const quotationData = { userName, businessName, mobileNumber, email, requirement, sector, time }
 
     const formValidationResult = validateForm(quotationData);
     if (!formValidationResult.success) {
         alert(formValidationResult.error)
         return;
     }
-    updateButtonState("requestQuotation-submit-btn", "Submitting...", true);
+    updateButtonState(submitButton, "Submitting...", true);
 
     try {
         const response = await fetch("https://aradhyetech-api.onrender.com/api/contact/quotationRequest", {
@@ -45,7 +46,7 @@ requestQuotationForm?.addEventListener("submit", async (e: SubmitEvent) => {
     } catch {
         alert("Failed to submit data");
     } finally {
-        updateButtonState("requestQuotation-submit-btn", "Submit", false);
+        updateButtonState(submitButton, "Submit", false);
     }
 })
 
@@ -98,11 +99,10 @@ function validateForm(quotationData: QuotationData): { success: true } | { succe
 }
 
 function updateButtonState(
-    buttonId: string,
+    button: HTMLButtonElement | null,
     label: string,
     isDisabled: boolean
-){
-    const button = document.getElementById(buttonId) as HTMLButtonElement | null;
+) {
     if (button) {
         button.textContent = label;
         button.setAttribute("aria-disabled", isDisabled.toString());
