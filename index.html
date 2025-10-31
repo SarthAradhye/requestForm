@@ -30,7 +30,7 @@
     </div>
     <div class="contactform">
 
-        <form action="" method="post">
+        <form id="requestQuotation">
             <label for="user_name">
                 Enter your name
                 <input type="text" id="user_name">
@@ -60,7 +60,7 @@
             </select>
             <label for="sector">
                 Which sector you would be catering?
-                <input type="text" placeholder="eg. Banking, Travel, etc.">
+                <input type="text" id="sector" placeholder="eg. Banking, Travel, etc.">
             </label>
             <label for="time">
                 When are you planning for purchase?
@@ -74,12 +74,12 @@
             </select>
 
             <div class="frmbtns">
-                <button type="submit">Submit</button>
+                <button id="requestQuotation-submit-btn" type="submit">Submit</button>
                 <button type="reset">Reset</button>
             </div>
         </form>
     </div>
-    <!-- <script type="module" src="/src/main.ts"></script> -->
+    <script type="module" src="/src/index.ts" defer></script>
 </body>
 
 </html>
