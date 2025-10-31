@@ -101,7 +101,7 @@ function updateButtonState(
     buttonId: string,
     label: string,
     isDisabled: boolean
-): void {
+){
     const button = document.getElementById(buttonId) as HTMLButtonElement | null;
     if (button) {
         button.textContent = label;
