@@ -6,7 +6,7 @@ type QuotationData = {
     requirement: string,
     sector: string,
     time: string,
-    brdReady: boolean,
+    brdReady: "yes"|"no",
 }
 
 const requestQuotationForm = document.getElementById("requestQuotation") as HTMLFormElement;
