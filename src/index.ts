@@ -6,6 +6,7 @@ type QuotationData = {
     requirement: string,
     sector: string,
     time: string,
+    brdReady: boolean,
 }
 
 const requestQuotationForm = document.getElementById("requestQuotation") as HTMLFormElement;
@@ -19,9 +20,12 @@ requestQuotationForm?.addEventListener("submit", async (e: SubmitEvent) => {
     const requirement = getInputValue("requirement");
     const sector = getInputValue("sector");
     const time = getInputValue("time");
+    const brdReady = document.getElementById('brd_ready').value;
+    
     const submitButton = document.getElementById("requestQuotation-submit-btn") as HTMLButtonElement | null;
-
-    const quotationData = { userName, businessName, mobileNumber, email, requirement, sector, time }
+    
+    
+    const quotationData = { userName, businessName, mobileNumber, email, requirement, sector, time,brdReady }
 
     const formValidationResult = validateForm(quotationData);
     if (!formValidationResult.success) {
@@ -95,6 +99,12 @@ function validateForm(quotationData: QuotationData): { success: true } | { succe
         const errorMessage = "Please select your preferred time frame.";
         return { success: false, error: errorMessage };
     }
+
+    if (!quotationData.brdReady || quotationData.brdReady === 'default') {
+        const errorMessage = "Please indicate whether your Business Requirements Document (BRD) is ready by selecting Yes or No.";
+        return { success: false, error: errorMessage };
+    }
+
     return { success: true };
 }
 
