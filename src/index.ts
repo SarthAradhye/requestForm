@@ -1,12 +1,21 @@
-type QuotationData = {
+type QuotationData  =BaseQuotationData& {
+    requirement: |"SimpleWebsite"|"DynamicWebsite"|"MobileApp"|"CustomSoftW"|"ECommSuite",
+    time: |"urgent"|"thisweek"|"thismonth"|"Flexible",
+    brdReady: "yes" | "no",
+}
+
+type QuotationFormInput =BaseQuotationData& {
+    requirement:string,
+    time:string,
+    brdReady:string,
+}
+
+type BaseQuotationData={
     userName: string,
     businessName: string,
     mobileNumber: string,
     email: string,
-    requirement: string,
     sector: string,
-    time: string,
-    brdReady: "yes"|"no",
 }
 
 const requestQuotationForm = document.getElementById("requestQuotation") as HTMLFormElement;
@@ -20,18 +29,19 @@ requestQuotationForm?.addEventListener("submit", async (e: SubmitEvent) => {
     const requirement = getInputValue("requirement");
     const sector = getInputValue("sector");
     const time = getInputValue("time");
-    const brdReady = document.getElementById('brd_ready').value;
-    
+    const brdReady = getInputValue('brd_ready');
+
     const submitButton = document.getElementById("requestQuotation-submit-btn") as HTMLButtonElement | null;
-    
-    
-    const quotationData = { userName, businessName, mobileNumber, email, requirement, sector, time,brdReady }
+
+
+    const quotationData = { userName, businessName, mobileNumber, email, requirement, sector, time, brdReady }
 
     const formValidationResult = validateForm(quotationData);
     if (!formValidationResult.success) {
         alert(formValidationResult.error)
         return;
     }
+    
     updateButtonState(submitButton, "Submitting...", true);
 
     try {
@@ -39,7 +49,7 @@ requestQuotationForm?.addEventListener("submit", async (e: SubmitEvent) => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
-            }, body: JSON.stringify(quotationData)
+            }, body: JSON.stringify(quotationData as QuotationData)
         })
         if (response.ok) {
             alert("Form submitted successfully")
@@ -58,7 +68,7 @@ function getInputValue(id: string): string {
     return (document.getElementById(id) as HTMLInputElement | HTMLSelectElement | null)?.value ?? "";
 }
 
-function validateForm(quotationData: QuotationData): { success: true } | { success: false, error: string } {
+function validateForm(quotationData: QuotationFormInput): { success: true } | { success: false, error: string } {
     const userNameLength = quotationData.userName.trim().length;
     if (userNameLength < 2 || userNameLength > 100) {
         const errorMessage = "Please enter your full name (2–100 characters).";
@@ -100,7 +110,8 @@ function validateForm(quotationData: QuotationData): { success: true } | { succe
         return { success: false, error: errorMessage };
     }
 
-    if (!quotationData.brdReady || quotationData.brdReady === 'default') {
+    const isBrdReady = quotationData.brdReady;
+    if (!isBrdReady || (isBrdReady !== "yes" && isBrdReady !== "no")) {
         const errorMessage = "Please indicate whether your Business Requirements Document (BRD) is ready by selecting Yes or No.";
         return { success: false, error: errorMessage };
     }
